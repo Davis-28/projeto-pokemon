@@ -1,0 +1,134 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #2e5685; /* Cor neutra de fundo */
+  color: #333333; /* Cor de texto mais sóbria */
+  line-height: 1.6;
+}
+
+body {
+  text-align: center;
+}
+
+.container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #0277BD; /* Azul suave */
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #0288D1; /* Azul escuro */
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+img {
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombras mais discretas */
+  width: 80%;
+  max-width: 400px;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.05); /* Efeito de zoom suave */
+}
+
+.btn {
+  border-radius: 25px;
+  padding: 15px 25px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  border: none;
+  margin: 10px;
+  width: 250px;
+}
+
+.btn-success {
+  background-color: #43A047; /* Verde suave tipo Planta */
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #388E3C;
+}
+
+.btn-info {
+  background-color: #039BE5; /* Azul claro tipo Água */
+  color: white;
+}
+
+.btn-info:hover {
+  background-color: #0288D1;
+}
+
+.btn-danger {
+  background-color: #F44336; /* Vermelho suave tipo Fogo */
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #D32F2F;
+}
+
+.form-control, .btn {
+  max-width: 300px;
+  margin: 10px auto;
+}
+
+.list-group-item {
+  font-size: 1.2rem;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 1px solid #E0E0E0;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1;
+}
+
+input[type="text"], input[type="search"] {
+  font-size: 16px;
+  padding: 12px;
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid #E0E0E0;
+}
+
+input[type="text"]:focus, input[type="search"]:focus {
+  border-color: #0288D1; /* Azul suave no foco */
+  box-shadow: 0 0 8px rgba(2, 136, 209, 0.5);
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 1rem;
+  color: #757575;
+  text-align: center;
+}
+
+footer a {
+  color: #039BE5;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+

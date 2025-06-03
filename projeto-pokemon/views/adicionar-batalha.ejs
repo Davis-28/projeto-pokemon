@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastrar Nova Batalha</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+  <script>
+    // Atualiza as opções do campo "Vencedor" com base nos treinadores selecionados
+    function atualizarVencedores() {
+      const treinador1 = document.getElementById("id_treinador1").value;
+      const treinador2 = document.getElementById("id_treinador2").value;
+      const vencedor = document.getElementById("id_treinador_vencedor");
+
+      // Limpa as opções existentes
+      vencedor.innerHTML = "";
+
+      // Adiciona opções com base nos treinadores selecionados
+      if (treinador1) {
+        const option1 = document.createElement("option");
+        option1.value = treinador1;
+        option1.textContent = document.querySelector(`#id_treinador1 option[value="${treinador1}"]`).textContent;
+        vencedor.appendChild(option1);
+      }
+
+      if (treinador2) {
+        const option2 = document.createElement("option");
+        option2.value = treinador2;
+        option2.textContent = document.querySelector(`#id_treinador2 option[value="${treinador2}"]`).textContent;
+        vencedor.appendChild(option2);
+      }
+    }
+
+    // Evita que o mesmo treinador seja escolhido duas vezes
+    function restringirTreinador2() {
+      const treinador1 = document.getElementById("id_treinador1").value;
+      const treinador2 = document.getElementById("id_treinador2");
+
+      // Habilita todas as opções
+      [...treinador2.options].forEach(option => option.disabled = false);
+
+      // Desabilita a opção selecionada no primeiro campo
+      if (treinador1) {
+        treinador2.querySelector(`option[value="${treinador1}"]`).disabled = true;
+      }
+
+      // Atualiza os vencedores para evitar inconsistências
+      atualizarVencedores();
+    }
+
+    // Evita que o mesmo Pokémon seja escolhido duas vezes
+    function restringirPokemon2() {
+      const pokemon1 = document.getElementById("id_pokemon1").value;
+      const pokemon2 = document.getElementById("id_pokemon2");
+
+      // Habilita todas as opções
+      [...pokemon2.options].forEach(option => option.disabled = false);
+
+      // Desabilita a opção selecionada no primeiro campo
+      if (pokemon1) {
+        pokemon2.querySelector(`option[value="${pokemon1}"]`).disabled = true;
+      }
+    }
+
+    // Validações ao submeter o formulário
+    function validarFormulario(event) {
+      const treinador1 = document.getElementById("id_treinador1").value;
+      const treinador2 = document.getElementById("id_treinador2").value;
+      const pokemon1 = document.getElementById("id_pokemon1").value;
+      const pokemon2 = document.getElementById("id_pokemon2").value;
+
+      if (treinador1 === treinador2) {
+        alert("Os treinadores devem ser diferentes!");
+        event.preventDefault();
+        return;
+      }
+
+      if (pokemon1 === pokemon2) {
+        alert("Os Pokémon devem ser diferentes!");
+        event.preventDefault();
+        return;
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-primary">Cadastrar Nova Batalha</h1>
+    <form action="/cadastrar-batalha" method="POST" onsubmit="validarFormulario(event)">
+      <div class="form-group">
+        <label for="id_treinador1">Treinador 1:</label>
+        <select id="id_treinador1" name="id_treinador1" class="form-control" onchange="restringirTreinador2()" required>
+          <option value="" selected hidden>Selecione o Treinador 1</option>
+          <% treinadores.forEach((treinador) => { %>
+            <option value="<%= treinador.id_treinador %>"><%= treinador.nome %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="id_treinador2">Treinador 2:</label>
+        <select id="id_treinador2" name="id_treinador2" class="form-control" onchange="restringirTreinador2(); atualizarVencedores()" required>
+          <option value="" selected hidden>Selecione o Treinador 2</option>
+          <% treinadores.forEach((treinador) => { %>
+            <option value="<%= treinador.id_treinador %>"><%= treinador.nome %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="id_pokemon1">Pokémon 1:</label>
+        <select id="id_pokemon1" name="id_pokemon1" class="form-control" onchange="restringirPokemon2()" required>
+          <option value="" selected hidden>Selecione o Pokémon 1</option>
+          <% pokemons.forEach((pokemon) => { %>
+            <option value="<%= pokemon.id %>"><%= pokemon.nome %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="id_pokemon2">Pokémon 2:</label>
+        <select id="id_pokemon2" name="id_pokemon2" class="form-control" onchange="restringirPokemon2()" required>
+          <option value="" selected hidden>Selecione o Pokémon 2</option>
+          <% pokemons.forEach((pokemon) => { %>
+            <option value="<%= pokemon.id %>"><%= pokemon.nome %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="id_treinador_vencedor">Vencedor:</label>
+        <select id="id_treinador_vencedor" name="id_treinador_vencedor" class="form-control" required>
+          <option value="" selected hidden>Selecione o Vencedor</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Data da Batalha:</label>
+        <input type="date" id="date" name="date" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Cadastrar Batalha</button>
+    </form>
+  </div>
+</body>
+</html>

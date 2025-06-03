@@ -1,0 +1,5 @@
+Sistema de Gerenciamento de Batalhas Pokémon 
+
+Durante a disciplina de Tópicos Especiais em Programação, desenvolvi junto com meus colegas um sistema completo para gerenciar batalhas entre Pokémon. O projeto consistiu na criação de uma aplicação integrada a um banco de dados, permitindo o cadastro, consulta, atualização e remoção de informações relacionadas a Pokémon, treinadores e batalhas.
+
+O sistema foi estruturado com base nos conceitos de CRUD e relacionamento entre entidades, possibilitando a montagem de batalhas automáticas entre Pokémon registrados. O banco de dados armazenava atributos relevantes, como nível, tipo e pontos de vida dos Pokémon, além dos dados dos treinadores responsáveis por eles. As batalhas eram simuladas com base nas estatísticas dos Pokémon e exibiam os resultados de forma interativa. Além da lógica de programação e da modelagem de dados, o projeto reforçou a importância da organização em equipe, versionamento com Git e aplicação de boas práticas de desenvolvimento.
